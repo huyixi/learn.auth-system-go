@@ -4,9 +4,13 @@ import (
 	"github.com/gin-gonic/gin"
 	"auth-system-go/handlers"
 	"auth-system-go/middleware"
+	"auth-system-go/db"
 )
 
 func main(){
+	db.InitDB()
+	defer db.CloseDB()
+
 	r :=gin.Default()
 
 	// check health
